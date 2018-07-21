@@ -1,9 +1,9 @@
 package cs.cooble.cypher;
 
-public class CaesarCypher implements Cypher {
+public class CaesarCypher implements Cypher,Keyable{
 
     private Alphabet abc;
-    private int shift;
+    private int shift=1;
 
     public CaesarCypher(Alphabet abc) {
         this.abc = abc;
@@ -11,6 +11,7 @@ public class CaesarCypher implements Cypher {
 
     public void setShift(int shift) {
         this.shift = shift;
+        this.shift%=abc.length;
     }
 
     @Override
@@ -41,5 +42,30 @@ public class CaesarCypher implements Cypher {
         setShift(-shift);
         return out;
 
+    }
+
+    @Override
+    public String[] getAttributes() {
+      return new String[]{shift+""};
+    }
+
+    @Override
+    public String[] getAttributesNames() {
+        return new String[]{"shift"};
+    }
+
+    @Override
+    public void setAttributes(String[] attributes) {
+        setShift(Integer.parseInt(attributes[0]));
+    }
+
+    @Override
+    public String toString() {
+        return "Caesar cypher";
+    }
+
+    @Override
+    public void setKey(String string) {
+        setShift(Integer.parseInt(string));
     }
 }

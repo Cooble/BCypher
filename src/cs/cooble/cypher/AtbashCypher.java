@@ -31,4 +31,24 @@ public class AtbashCypher implements Cypher {
     public String decypher(String input) {
         return cypher(input);
     }
+
+    @Override
+    public String[] getAttributes() {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getAttributesNames() {
+        return new String[0];
+    }
+
+    @Override
+    public void setAttributes(String[] attributes) {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Atbash cypher";
+    }
 }

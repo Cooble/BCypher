@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="581.0" prefWidth="1193.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs.cooble.gui.FXMLDocumentController">
+   <left>
+      <TextArea fx:id="sourceTxt" prefHeight="549.0" prefWidth="440.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <TextArea fx:id="outTxt" editable="false" prefHeight="549.0" prefWidth="528.0" BorderPane.alignment="CENTER">
+         <effect>
+            <Blend />
+         </effect>
+      </TextArea>
+   </right>
+   <top>
+      <HBox>
+         <children>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ChoiceBox fx:id="cypherChoice" prefWidth="150.0" />
+            <Button fx:id="decodeBtn" mnemonicParsing="false" text="Try to decode" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="sourceAttrib" prefHeight="549.0" prefWidth="182.0" />
+            <ListView fx:id="inAttrib" editable="true" prefHeight="549.0" prefWidth="182.0" />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
