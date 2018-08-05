@@ -6,4 +6,8 @@ package cs.cooble.cypher;
 public interface Decypher {
 
     String[] decypher(String cypher);
+
+    default boolean busy() {return false;}
+
+    default String currentState(){return null;}
 }

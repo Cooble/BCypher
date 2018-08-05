@@ -1,7 +1,9 @@
 package cs.cooble.gui;
 
+import com.sun.javafx.tk.Toolkit;
 import cs.cooble.cypher.Cypher;
 import cs.cooble.main.Translator;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -18,6 +20,8 @@ import java.util.ResourceBundle;
  * Created by Matej on 20.7.2018.
  */
 public class FXMLDocumentController implements Initializable {
+    @FXML
+    public Button desymbolBtn;
 
     @FXML
     private TextArea sourceTxt;
@@ -58,7 +62,7 @@ public class FXMLDocumentController implements Initializable {
                 inAttrib.getItems().set(t.getIndex(), t.getNewValue());
                 String[] values = new String[inAttrib.getItems().size()];
                 for (int i = 0; i < values.length; i++) {
-                    values[i]=inAttrib.getItems().get(i).toString();
+                    values[i] = inAttrib.getItems().get(i).toString();
                 }
                 Translator.getCurrentCypher().setAttributes(values);
                 refreshTranslation();
@@ -74,8 +78,15 @@ public class FXMLDocumentController implements Initializable {
             refreshTranslation();
             prepareAttributes(Translator.getCurrentCypher());
         });
+        desymbolBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+            }
+        });
     }
-    private void prepareAttributes(Cypher cypher){
+
+    private void prepareAttributes(Cypher cypher) {
         sourceAttrib.getItems().clear();
         sourceAttrib.getItems().addAll(cypher.getAttributesNames());
         inAttrib.getItems().clear();
@@ -83,8 +94,10 @@ public class FXMLDocumentController implements Initializable {
         refreshTranslation();
     }
 
-    private void refreshTranslation(){
-        outTxt.setText(Translator.translate(sourceTxt.getText()));
+    private void refreshTranslation() {
+       outTxt.setText(Translator.translate(sourceTxt.getText()));
     }
+
+
 
 }

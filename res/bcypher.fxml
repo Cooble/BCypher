@@ -30,6 +30,11 @@
             </MenuBar>
             <ChoiceBox fx:id="cypherChoice" prefWidth="150.0" />
             <Button fx:id="decodeBtn" mnemonicParsing="false" text="Try to decode" />
+            <BorderPane prefHeight="32.0" prefWidth="868.0">
+               <right>
+                  <Button fx:id="desymbolBtn" mnemonicParsing="false" text="Desymbol" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
          </children>
       </HBox>
    </top>
