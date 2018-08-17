@@ -5,7 +5,7 @@ Encodes and decodes cyphers:
    * Caesar
    * Symbol replacement
 
-## Symbol replacement
+### Symbol replacement
 *this can replace Atbash and Caesar but not Vigenere
 *needs lot of words (like circa 10)
 
