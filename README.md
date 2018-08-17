@@ -13,4 +13,4 @@ Encodes and decodes cyphers:
 Offers possibility to save cypher keys to be used another time in .txt format
 
 
-using list of english words: http://norvig.com/ngrams/count_1w.txt
+using list of english words with number of occurences on the internet: http://norvig.com/ngrams/count_1w.txt
