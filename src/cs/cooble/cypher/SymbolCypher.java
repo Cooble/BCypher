@@ -2,37 +2,48 @@ package cs.cooble.cypher;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 /**
  * Created by Matej on 5.8.2018.
  */
 public class SymbolCypher implements Cypher {
 
-
     private final Alphabet alphabet;
-    private Map<Integer,Integer> key = new HashMap<>();
+    private Map<Integer, Integer> key = new HashMap<>();
+
     public SymbolCypher(Alphabet alphabet) {
         this.alphabet = alphabet;
         for (int i = 0; i < alphabet.length; i++) {
-            key.put(alphabet.abc[i],alphabet.abc[alphabet.length-1-i]);
+            key.put(alphabet.abc[i], alphabet.abc[alphabet.length - 1 - i]);
         }
     }
 
     @Override
     public String cypher(String input) {
-        return useKey(key,prepare(input));
+        return useKey(key, input.toUpperCase());
     }
 
     @Override
     public String decypher(String input) {
-        return "";
+        Map<Integer,Integer> newKey  =new HashMap<>();
+        key.forEach(new BiConsumer<Integer, Integer>() {
+            @Override
+            public void accept(Integer integer, Integer integer2) {
+                newKey.put(integer2,integer);
+            }
+        });
+        return useKey(newKey,input);
     }
 
     @Override
     public String[] getAttributes() {
         String[] out = new String[alphabet.length];
-        for (int i = 0; i < alphabet.length; i++)
-            out[i]=""+((char)(int)key.get(alphabet.abc[i]));
+        for (int i = 0; i < alphabet.length; i++) {
+            Integer in = key.get(alphabet.abc[i]);
+            String s = in==null?"?":((char)(int)in)+"";
+            out[i] = "" + s;
+        }
         return out;
     }
 
@@ -40,7 +51,7 @@ public class SymbolCypher implements Cypher {
     public String[] getAttributesNames() {
         String[] out = new String[alphabet.length];
         for (int i = 0; i < alphabet.length; i++) {
-            out[i]=""+((char)((int)alphabet.abc[i]));
+            out[i] = "" + ((char) ((int) alphabet.abc[i]));
         }
         return out;
     }
@@ -49,20 +60,36 @@ public class SymbolCypher implements Cypher {
     public void setAttributes(String[] attributes) {
         key.clear();
         for (int i = 0; i < alphabet.length; i++)
-            key.put(alphabet.abc[i],(int)attributes[i].charAt(0));
+            key.put(alphabet.abc[i], (int) attributes[i].toUpperCase().charAt(0));
+    }
+
+    public void setKey(Map<Integer, Integer> key) {
+        this.key = key;
+        for (int i = 0; i < alphabet.length; i++) {
+            Integer in = key.get(alphabet.abc[i]);
+            key.put(alphabet.abc[i],in==null?'?':in);
+        }
     }
 
     protected static String useKey(Map<Integer, Integer> key, String word) {
         StringBuilder builder = new StringBuilder(word.length());
         for (int i = 0; i < word.length(); i++) {
-            if (key.keySet().contains((int) word.charAt(i)))
-                builder.append((char)(int)key.get((int) word.charAt(i)));
+            if (key.keySet().contains((int) word.charAt(i))) {
+                if (key.get((int) word.charAt(i)) == -1)//ignore -1
+                    builder.append(word.charAt(i));
+                else
+                    builder.append((char) (int) key.get((int) word.charAt(i)));
+            } else builder.append(word.charAt(i));
         }
         return builder.toString();
     }
 
     protected static String prepare(String txt) {
         txt = txt.replace("'", " ");
+        txt = txt.replace("!", " ");
+        txt = txt.replace("?", " ");
+        txt = txt.replace(".", " ");
+        txt = txt.replace("\n", " ");
         txt = txt.replace("  ", " ");
         txt = txt.replace("  ", " ");
         txt = txt.trim();

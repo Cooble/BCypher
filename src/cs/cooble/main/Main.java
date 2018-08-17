@@ -3,39 +3,26 @@ package cs.cooble.main;
 import cs.cooble.cypher.*;
 import cs.cooble.dictionary.Dictionary;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class Main {
 
+    private static final int DICKS_NUMBER = 31;
     public static void main(String[] args) {
-       // allCyphers();
-      //  if (true)
-      //      return;
+      /*  generateSizedDictionaries(new File("D:\\Dev\\Java\\NORMAL\\BCypher\\res\\word_frequency.txt"),new File("D:\\Dev\\Java\\NORMAL\\BCypher\\res"));
+        if(true)
+            return;*/
         Scanner scanner = new Scanner(System.in);
 
-        InputStream stream = Main.class.getClassLoader().getResourceAsStream("words_alpha.txt");
-        Dictionary dictionary = new Dictionary();
-        CaesarCypher caesar = new CaesarCypher(new Alphabet());
-        CaesarDecypher decypher = new CaesarDecypher(dictionary, new Alphabet());
 
-        dictionary.load(stream);
-        System.out.println("loaded dick with " + dictionary.length() + " words");
-
-        while (true) {
-            System.out.println("========================================");
-            System.out.println("enter value");
-            String value = scanner.nextLine();
-            System.out.println("running decypherification");
-            String[] decyp = decypher.decypher(caesar.cypher(value));
-            for (int i = 0; i <decyp.length; i++) {
-                System.out.println(decyp[i]);
-
-            }
-        }
-
+        Dictionary dictionary = Dictionary.load();
+        SymbolDec symbolDec = new SymbolDec(dictionary, new Alphabet(),new Alphabet());
+        String input = "SVOOL NB MZNV RH KRMVH ZMW R DLFOW ORPV GL HSLD BLF HLNVGSRMT ZYLFG GSV NBHGVIRLFH GLDM LU TIZERGB UZOOH RGH IVZOOB XLLO";
+        System.out.println("Best guess of: " + input + " is: ");
+        System.out.println(symbolDec.decypher(input)[0]);
 
     }
 
@@ -85,5 +72,44 @@ public class Main {
             System.out.println(c.cypher(value));
 
         }
+    }
+
+    public static void generateSizedDictionaries(File srcFile,File folder){
+        if(!folder.exists())
+            folder.mkdirs();
+        Map<Integer,List<String>> sorted = new HashMap<>();
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(srcFile))) {
+            reader.lines().forEach(new Consumer<String>() {
+                @Override
+                public void accept(String s) {
+                    String word = s.split("\t")[0];//remove occurrences
+                    int length = word.length();
+                    if(!sorted.containsKey(length))
+                        sorted.put(length,new ArrayList<>());
+                    sorted.get(length).add(s);
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        sorted.forEach(new BiConsumer<Integer, List<String>>() {
+            @Override
+            public void accept(Integer integer, List<String> strings) {
+                File target  = new File(folder.getAbsolutePath()+"/"+integer+".txt");
+                try (PrintWriter writer = new PrintWriter(target)){
+                    for(String s:strings) {
+                        double d = Double.parseDouble(s.split("\t")[1]);
+                        if(d>=484886)
+                            writer.println(s.toUpperCase());
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        System.out.println("done copying");
+
     }
 }

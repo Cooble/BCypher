@@ -5,12 +5,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="581.0" prefWidth="1193.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs.cooble.gui.FXMLDocumentController">
+<BorderPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs.cooble.gui.FXMLDocumentController">
    <left>
-      <TextArea fx:id="sourceTxt" prefHeight="549.0" prefWidth="440.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="sourceTxt" prefHeight="800.0" prefWidth="500.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <TextArea fx:id="outTxt" editable="false" prefHeight="549.0" prefWidth="528.0" BorderPane.alignment="CENTER">
+      <TextArea fx:id="outTxt" editable="false" prefHeight="800.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <effect>
             <Blend />
          </effect>
@@ -23,7 +23,8 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem fx:id="loadBtn" mnemonicParsing="false" text="Load" />
+                        <MenuItem fx:id="saveBtn" mnemonicParsing="false" text="Save" />
                   </items>
                 </Menu>
               </menus>
@@ -31,18 +32,15 @@
             <ChoiceBox fx:id="cypherChoice" prefWidth="150.0" />
             <Button fx:id="decodeBtn" mnemonicParsing="false" text="Try to decode" />
             <BorderPane prefHeight="32.0" prefWidth="868.0">
-               <right>
-                  <Button fx:id="desymbolBtn" mnemonicParsing="false" text="Desymbol" BorderPane.alignment="CENTER" />
-               </right>
             </BorderPane>
          </children>
       </HBox>
    </top>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="800.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="sourceAttrib" prefHeight="549.0" prefWidth="182.0" />
-            <ListView fx:id="inAttrib" editable="true" prefHeight="549.0" prefWidth="182.0" />
+            <ListView fx:id="sourceAttrib" prefHeight="800.0" prefWidth="182.0" />
+            <ListView fx:id="inAttrib" editable="true" prefHeight="800.0" prefWidth="182.0" />
          </children>
       </HBox>
    </center>

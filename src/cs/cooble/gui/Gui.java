@@ -20,7 +20,8 @@ public class Gui extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Gui.class.getClassLoader().getResource("bcypher.fxml"));
 
-        Scene scene = new Scene(root, 0, 0);
+        Scene scene = new Scene(root, 1300, 800);
+
 
         stage.setTitle("BCypher");
         stage.setScene(scene);

@@ -13,6 +13,7 @@ public class CaesarDecypher implements Decypher {
     private Dictionary dictionary;
     private CaesarCypher caesar;
     private Alphabet alphabet;
+    private volatile boolean busy;
 
     public CaesarDecypher(Dictionary dictionary, Alphabet alphabet) {
         this.dictionary = dictionary;
@@ -28,6 +29,7 @@ public class CaesarDecypher implements Decypher {
 
     @Override
     public String[] decypher(String cypher) {
+        busy=true;
         int shift=-1;
         cypher = cypher.toUpperCase();
         String[] out = new String[alphabet.length];
@@ -52,6 +54,13 @@ public class CaesarDecypher implements Decypher {
 
         }
         caesar.setShift(alphabet.length-shift);
+        System.out.println("shift is "+(alphabet.length-shift));
+        busy=false;
         return possibles.toArray(new String[possibles.size()]);
+    }
+
+    @Override
+    public boolean busy() {
+        return busy;
     }
 }
