@@ -25,8 +25,8 @@ Encodes and decodes cyphers:
   10. You can alter the remaining characters from the center columns. (There could be some mistakes)
   11. You can save the key using File -> Save
   
-  Note:
-  If the program gets stuck at step 6, terminate it and use other set of words for the decoding process. Some word is probably not present in the dictionary.
+  ##### Note:
+  If the program gets stuck at step 6, terminate it and use other set of words for the decoding process. Some word is probably not         present in the dictionary.
   
 
 
