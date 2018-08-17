@@ -5,6 +5,14 @@ Encodes and decodes cyphers:
    * Caesar
    * Symbol replacement
 
+Offers possibility to save cypher keys to be used another time in .txt format
+
+Ignores Upper/Lower case letters
+
+using list of english words with number of occurences on the internet: http://norvig.com/ngrams/count_1w.txt
+
+
+
 
 
 ### Symbol replacement Cypher
@@ -27,11 +35,3 @@ Encodes and decodes cyphers:
   
   ##### Note:
   If the program gets stuck at step 6, terminate it and use other set of words for the decoding process. Some word is probably not         present in the dictionary.
-  
-
-
-Offers possibility to save cypher keys to be used another time in .txt format
-Ignores Upper/Lower case letters
-
-
-using list of english words with number of occurences on the internet: http://norvig.com/ngrams/count_1w.txt
