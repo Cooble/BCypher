@@ -10,20 +10,10 @@ import java.util.function.Consumer;
 
 public class Main {
 
-    private static final int DICKS_NUMBER = 31;
     public static void main(String[] args) {
       /*  generateSizedDictionaries(new File("D:\\Dev\\Java\\NORMAL\\BCypher\\res\\word_frequency.txt"),new File("D:\\Dev\\Java\\NORMAL\\BCypher\\res"));
         if(true)
             return;*/
-        Scanner scanner = new Scanner(System.in);
-
-
-        Dictionary dictionary = Dictionary.load();
-        SymbolDec symbolDec = new SymbolDec(dictionary, new Alphabet(),new Alphabet());
-        String input = "SVOOL NB MZNV RH KRMVH ZMW R DLFOW ORPV GL HSLD BLF HLNVGSRMT ZYLFG GSV NBHGVIRLFH GLDM LU TIZERGB UZOOH RGH IVZOOB XLLO";
-        System.out.println("Best guess of: " + input + " is: ");
-        System.out.println(symbolDec.decypher(input)[0]);
-
     }
 
     public static void allCyphers() {
@@ -74,6 +64,12 @@ public class Main {
         }
     }
 
+    /**
+     * sorts word_frequency.txt words to files by its length
+     *
+     * @param srcFile
+     * @param folder
+     */
     public static void generateSizedDictionaries(File srcFile,File folder){
         if(!folder.exists())
             folder.mkdirs();
@@ -101,7 +97,7 @@ public class Main {
                 try (PrintWriter writer = new PrintWriter(target)){
                     for(String s:strings) {
                         double d = Double.parseDouble(s.split("\t")[1]);
-                        if(d>=484886)
+                        if(d>=484886)//ignore not so popular words
                             writer.println(s.toUpperCase());
                     }
                 } catch (FileNotFoundException e) {

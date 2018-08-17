@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 /**
- * Created by Matej on 5.8.2018.
+ * Replace each character with some other character specified by key: {@code Map<strange_symbol,possible_real_letter>}
  */
 public class SymbolCypher implements Cypher {
 

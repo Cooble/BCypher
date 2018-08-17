@@ -12,6 +12,13 @@ import static cs.cooble.cypher.SymbolCypher.*;
 
 /**
  * Created by Matej on 5.8.2018.
+ * Is able to decypher any cypher with each letter replaced with some other letter.
+ * i.e. "abcd" could mean "heart"
+ * uses whole english dictionary
+ * the longer the cypher the better and faster guesses are (at certain point is better not to add more words as this can contrary slow process down)
+ * if word from cypher is not contained ín dictionary, Decypher won't probably ever finish decoding
+ *
+ * to decypher such a cypher one must replace each strange character with any letter from normal alphabet (better to write this translation down before giving it to the program)
  */
 public class SymbolDec {
 
