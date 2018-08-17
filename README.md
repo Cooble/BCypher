@@ -5,10 +5,11 @@ Encodes and decodes cyphers:
    * Caesar
    * Symbol replacement
 
-### Symbol replacement
-  - each letter is replaced with some other
-  - this can replace Atbash and Caesar but not Vigenere
-  - needs lot of words (like circa 10)
+### Symbol replacement Cypher
+  * each letter is replaced with some other
+  * this can replace Atbash and Caesar but not Vigenere
+  * needs lot of words when decoding (like circa 10, the longer the better)
+#### Symbol replacement Cypher 
 
 Offers possibility to save cypher keys to be used another time in .txt format
 
