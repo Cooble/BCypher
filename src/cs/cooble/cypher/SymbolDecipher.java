@@ -23,6 +23,7 @@ public class SymbolDecipher implements Decypher {
     public String[] decypher(String cypher) {
         cypher =cypher.toUpperCase();
         busy=true;
+        symbolDec.setUseKey(symbolCypher.isUseKey()?symbolCypher.getKey():null);
         symbolDec.decypher(cypher);
         Map<Integer, Integer> key = symbolDec.getBestKey();
         symbolCypher.setKey(key);

@@ -25,6 +25,7 @@ public class SymbolDec {
     private final Dictionary dictionary;
     private final Alphabet alphabet;
     private final Alphabet symbolAlphabet;
+    private Map<Integer, Integer> useKey;
 
     /**
      * @param dictionary
@@ -42,6 +43,9 @@ public class SymbolDec {
     private Map<Integer, Integer> bestKey = new HashMap<>();
 
     public String[] decypher(String cypher) {
+        size=0;
+        overflow=false;
+        keys.clear();
         String oldCypher = cypher;
         cypher = prepare(cypher);
         this.cypher = cypher;
@@ -54,6 +58,8 @@ public class SymbolDec {
 
         Map<Integer, Integer> key = new HashMap<>();
         prepareKey(key, sortedMostUsed, sortedEnglishUsed);
+        if(useKey!=null)
+            key=useKey;
         List<Word> words = buildWords(wordsArray, key);
         sortByGuesses(words);
 
@@ -117,7 +123,7 @@ public class SymbolDec {
         Word word = words.get(wordIndex);
         word.recalculateAllGuesses(key);
         Map<Integer, Integer> bufferKey = new HashMap<>();
-        for (int guessNumber = 0; guessNumber < Math.min(MAX_GUESS_SIZE, word.guessSize()); guessNumber++) {
+        for (int guessNumber = 0; guessNumber < Math.min(MAX_GUESS_SIZE, word.guessSize())&&!overflow; guessNumber++) {
             bufferKey = copyKey(key, bufferKey);
             word.alterKeyToNextWord(guessNumber, bufferKey);
 
@@ -143,12 +149,16 @@ public class SymbolDec {
     private List<Map<Integer, Integer>> keys = new ArrayList<>();
     private long out = 0;
     private long size = 0;
+    private boolean overflow;
+    private static final int OVERFLOW_LIMIT = 100000;
 
     private void registerPossibleKey(Map<Integer, Integer> key) {
         out++;
         if (out % 100 == 0)
             System.out.println(useKey(key, cypher) + " " + (size + 1));
         keys.add(key);
+        if(size>OVERFLOW_LIMIT)
+            overflow=true;
         size++;
     }
 
@@ -248,6 +258,10 @@ public class SymbolDec {
         });
         return out;
 
+    }
+
+    public void setUseKey(Map<Integer, Integer> useKey) {
+        this.useKey = useKey;
     }
 
 
