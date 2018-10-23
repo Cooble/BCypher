@@ -1,4 +1,4 @@
-package cs.cooble.gui;/**
+package mc.cooble.gui;/**
  * Created by Matej on 20.7.2018.
  */
 

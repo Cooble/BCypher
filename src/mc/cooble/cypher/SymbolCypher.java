@@ -1,4 +1,4 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
 import java.util.HashMap;
 import java.util.Map;

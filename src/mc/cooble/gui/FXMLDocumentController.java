@@ -1,9 +1,7 @@
-package cs.cooble.gui;
+package mc.cooble.gui;
 
-import com.sun.javafx.tk.Toolkit;
-import cs.cooble.cypher.Cypher;
-import cs.cooble.main.Translator;
-import javafx.application.Platform;
+import mc.cooble.cypher.Cypher;
+import mc.cooble.main.Translator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -12,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
-import javafx.scene.input.ScrollEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;

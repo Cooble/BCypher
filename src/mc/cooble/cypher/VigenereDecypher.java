@@ -1,6 +1,6 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
-import cs.cooble.dictionary.Dictionary;
+import mc.cooble.dictionary.Dictionary;
 
 /**
  * Created by Matej on 20.7.2018.
@@ -18,6 +18,7 @@ public class VigenereDecypher implements Decypher {
 
     @Override
     public String[] decypher(String cypher) {
-        return new String[]{cypher};
+        System.out.println("decyphering");
+        return new String[]{this.cypher.decypher(cypher)};
     }
 }

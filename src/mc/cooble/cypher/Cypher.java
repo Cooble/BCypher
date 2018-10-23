@@ -1,4 +1,4 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
 
 public interface Cypher {

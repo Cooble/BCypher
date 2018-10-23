@@ -1,6 +1,6 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
-import cs.cooble.dictionary.Dictionary;
+import mc.cooble.dictionary.Dictionary;
 
 import java.util.ArrayList;
 import java.util.List;

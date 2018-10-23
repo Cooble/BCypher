@@ -1,4 +1,4 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
 /**
  * Created by Matej on 5.8.2018.

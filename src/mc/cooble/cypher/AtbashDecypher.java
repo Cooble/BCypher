@@ -1,6 +1,6 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
-import cs.cooble.dictionary.Dictionary;
+import mc.cooble.dictionary.Dictionary;
 
 /**
  * Created by Matej on 20.7.2018.

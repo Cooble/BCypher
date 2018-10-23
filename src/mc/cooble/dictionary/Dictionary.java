@@ -1,13 +1,12 @@
-package cs.cooble.dictionary;
+package mc.cooble.dictionary;
 
 import com.sun.istack.internal.Nullable;
-import cs.cooble.main.Main;
+import mc.cooble.main.Main;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
-import java.util.function.Consumer;
 
 /**
  * Created by Matej on 20.7.2018.

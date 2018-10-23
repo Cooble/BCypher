@@ -1,7 +1,7 @@
-package cs.cooble.main;
+package mc.cooble.main;
 
-import cs.cooble.cypher.*;
-import cs.cooble.dictionary.Dictionary;
+import mc.cooble.cypher.*;
+import mc.cooble.dictionary.Dictionary;
 
 import java.io.*;
 import java.util.*;

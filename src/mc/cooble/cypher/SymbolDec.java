@@ -1,14 +1,12 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
 import com.sun.istack.internal.Nullable;
-import cs.cooble.dictionary.Dictionary;
+import mc.cooble.dictionary.Dictionary;
 
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
-
-import static cs.cooble.cypher.SymbolCypher.*;
 
 /**
  * Created by Matej on 5.8.2018.

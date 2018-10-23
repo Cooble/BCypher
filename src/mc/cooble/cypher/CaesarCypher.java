@@ -1,4 +1,4 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
 public class CaesarCypher implements Cypher,Keyable{
 

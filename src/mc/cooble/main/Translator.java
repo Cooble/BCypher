@@ -1,9 +1,8 @@
-package cs.cooble.main;
+package mc.cooble.main;
 
-import cs.cooble.cypher.*;
-import cs.cooble.dictionary.Dictionary;
+import mc.cooble.cypher.*;
+import mc.cooble.dictionary.Dictionary;
 
-import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

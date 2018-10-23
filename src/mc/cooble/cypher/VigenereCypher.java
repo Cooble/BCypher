@@ -1,4 +1,4 @@
-package cs.cooble.cypher;
+package mc.cooble.cypher;
 
 
 public class VigenereCypher implements Cypher, Keyable {
@@ -10,6 +10,7 @@ public class VigenereCypher implements Cypher, Keyable {
      * R1 -> 'a'->'b'
      */
     private boolean R1;
+    private boolean decypher;
 
     private CaesarCypher caesar;
 
@@ -36,7 +37,7 @@ public class VigenereCypher implements Cypher, Keyable {
                 int shift = abc.indexOf(key.charAt(keyIndex));
                 if (R1)
                     shift += 1;
-                caesar.setShift(shift);
+                caesar.setShift(decypher?-shift:shift);
                 output[i] = caesar.cypher((char) symbol + "").charAt(0);
                 keyIndexfromi++;
             } else output[i] = (char) symbol;
@@ -47,14 +48,19 @@ public class VigenereCypher implements Cypher, Keyable {
 
     @Override
     public String decypher(String input) {
+        input = input.toUpperCase();
+        int keyIndexfromi = 0;
         char[] output = new char[input.length()];
         for (int i = 0; i < input.length(); i++) {
             int symbol = input.charAt(i);
             if (abc.indexOf(symbol) != -1) {
-                int keyIndex = i % key.length();
-                int shift = abc.indexOf(abc.abc[keyIndex]);
+                int keyIndex = keyIndexfromi % key.length();
+                int shift = abc.indexOf(key.charAt(keyIndex));
+                if (R1)
+                    shift += 1;
                 caesar.setShift(-shift);
                 output[i] = caesar.cypher((char) symbol + "").charAt(0);
+                keyIndexfromi++;
             } else output[i] = (char) symbol;
         }
 
@@ -63,12 +69,12 @@ public class VigenereCypher implements Cypher, Keyable {
 
     @Override
     public String[] getAttributesNames() {
-        return new String[]{"key", "R-1"};
+        return new String[]{"key", "R-1","decypher"};
     }
 
     @Override
     public String[] getAttributes() {
-        return new String[]{key, R1 + ""};
+        return new String[]{key, R1 + "",""+decypher};
     }
 
     @Override
@@ -80,6 +86,11 @@ public class VigenereCypher implements Cypher, Keyable {
             R1=true;
         else
             R1 = Boolean.parseBoolean(attributes[1]);
+
+        if(attributes[2].equals("1"))
+            decypher=true;
+        else
+            decypher = Boolean.parseBoolean(attributes[2]);
     }
 
     @Override
