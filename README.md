@@ -35,3 +35,4 @@ using list of english words with number of occurences on the internet: http://no
   
   ##### Note:
   If the program gets stuck at step 6, terminate it and use other set of words for the decoding process. Some word is probably not         present in the dictionary.
+  
